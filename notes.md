@@ -16,8 +16,8 @@ A quick reference for npm and pnpm commands in modern projects.
 | **Task**                     | **npm Command**              | **pnpm Command**                 | **Notes**                                        |
 |------------------------------|------------------------------|----------------------------------|--------------------------------------------------|
 | Install dependencies         | `npm install`                | `pnpm install`                   | Default install of `package.json` dependencies   |
-| Install a package            | `npm install pkg`            | `pnpm add pkg`                   | Use `-D` / `--save-dev` for dev dependencies     |
-| Install a dev dependency     | `npm install pkg --save-dev` | `pnpm add pkg -D`                | Same as above                                    |
+| Install a package            | `npm install pkg`            | `npm install pkg`                   | Use `-D` / `--save-dev` for dev dependencies     |
+| Install a dev dependency     | `npm install pkg --save-dev` | `npm install pkg -D`                | Same as above                                    |
 | Remove a package             | `npm uninstall pkg`          | `pnpm remove pkg`                | Removes from `package.json`                      |
 | Update a package             | `npm update pkg`             | `pnpm update pkg`                | Updates package in project                       |
 | Run script                   | `npm run <script>`           | `pnpm run <script>`              | Executes scripts from `package.json`             |
@@ -32,7 +32,7 @@ A quick reference for npm and pnpm commands in modern projects.
 
 ### Notes on pnpm
 
-1. `pnpm add` → equivalent to `npm install`  
+1. `npm install` → equivalent to `npm install`  
 2. `pnpm remove` → equivalent to `npm uninstall`  
 3. `pnpm exec` → runs binaries (like `npx`)  
 4. `pnpm dlx` → one-off execution of packages (replacement for old `pnpx`)  
@@ -40,7 +40,7 @@ A quick reference for npm and pnpm commands in modern projects.
 
 
 ✅ **TL;DR**  
-- `pnpm add/remove/update/run` = `npm install/uninstall/update/run`  
+- `npm install/remove/update/run` = `npm install/uninstall/update/run`  
 - `pnpm exec` = `npx`  
 - `pnpm dlx` = `npx` for one-time package execution
 
@@ -61,7 +61,7 @@ pnpm create expo-app my-ui-app --template expo-template-blank-typescript
 npx expo install react-native-web react-native-gesture-handler react-native-screens react-native-safe-area-context @expo/vector-icons
 
 # router + query + state
-pnpm add expo-router @tanstack/react-query zustand
+npm install expo-router @tanstack/react-query zustand
 
 # animations & gesture (use expo install for compatibility)
 npx expo install react-native-reanimated
@@ -70,14 +70,14 @@ npx expo install react-native-reanimated
 
 ## 3 Install NativeWind (Tailwind for RN) and tooling:
 
-pnpm add nativewind
-pnpm add -D tailwindcss prettier-plugin-tailwindcss
+npm install nativewind
+npm install -D tailwindcss prettier-plugin-tailwindcss
 npx tailwindcss init
 
 
 ## 4 Add dev tools:
 
-pnpm add -D eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/eslint-plugin @typescript-eslint/parser husky lint-staged
+npm install -D eslint prettier eslint-config-prettier eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/eslint-plugin @typescript-eslint/parser husky lint-staged
 
 
 ## 5 Configure Babel (Reanimated plugin must be last):
