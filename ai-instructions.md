@@ -60,6 +60,7 @@
 ---
 
 ## 📝 Coding Rules
+
 - **Language:** TypeScript only (`strict: true`).
 - **Components:** Functional components with typed props (`Props` interface).
 - **Styling:** Use NativeWind classes. Use `style` only for dynamic values.
@@ -80,6 +81,8 @@ tailwind.config.js
 babel.config.js
 tsconfig.json
 eas.json
+
+**Note:** Never pass `style` or `className` props to React.Fragment or any component that does not accept them (e.g., only pass `style` to View, Text, etc. in React Native). This will cause runtime errors. Always check component documentation before adding props.
 
 <!-- ## 🧪 Testing Rules
 - Each UI component must have at least one Jest/RNTL test and one Storybook story.

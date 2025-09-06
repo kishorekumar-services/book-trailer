@@ -1,5 +1,6 @@
 import React from "react";
-import { View, TextInput } from "react-native";
+import { View } from "react-native";
+import LocationSelector, { Location } from "../components/LocationSelector";
 // import { useQuery } from "@tanstack/react-query";
 // import { useVendorStore } from "../stores/vendorStore";
 
@@ -13,25 +14,23 @@ const VendorLookUpScreen: React.FC<Props> = ({ testID = "vendor-lookup-screen", 
   // const { data, isLoading } = useQuery({ ... });
   // const vendorState = useVendorStore();
 
+  const handleLocationChange = (pickup: Location | null, dropoff: Location | null) => {
+    // You can handle location changes here (e.g., update state, call API, etc.)
+    // For now, just log them
+    console.log("Pickup:", pickup);
+    console.log("Dropoff:", dropoff);
+  };
+
+  const handleDurationCalculated = (duration: string) => {
+    // Handle duration calculated (future use)
+    console.log("Duration:", duration);
+  };
+
   return (
-    <View
-      className="flex-row items-center justify-center p-4"
-      testID={testID}
-      accessibilityLabel={accessibilityLabel}
-    >
-      <TextInput
-        className="flex-1 border border-gray-300 rounded-lg p-2 mr-2"
-        placeholder="Pickup Address"
-        testID="pickup-address-input"
-        accessibilityLabel="Pickup Address Input"
-        autoCapitalize="none"
-      />
-      <TextInput
-        className="flex-1 border border-gray-300 rounded-lg p-2 ml-2"
-        placeholder="Drop Address"
-        testID="drop-address-input"
-        accessibilityLabel="Drop Address Input"
-        autoCapitalize="none"
+    <View testID={testID} accessibilityLabel={accessibilityLabel}>
+      <LocationSelector
+        onLocationChange={handleLocationChange}
+        onDurationCalculated={handleDurationCalculated}
       />
     </View>
   );
