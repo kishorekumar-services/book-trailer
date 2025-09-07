@@ -161,5 +161,39 @@ Output: TSX file in src/components/atoms
 - Maestro: https://maestro.mobile.dev
 
 
+# Copilot Instructions: Google Maps (React Native, 2025+)
+
+When generating or modifying code that integrates Google Maps APIs in this project, always follow these rules:
+
+1. ✅ Use only **modern APIs**:
+   - For place picking & search → Use **Places API (New)**, with `PlaceAutocompleteElement` or equivalent updated methods.  
+   - For routing & navigation → Use **Routes API** (`computeRoutes`, `computeRouteMatrix`, `searchAlongRoute`), **not** the deprecated Directions API.  
+   - For maps display → Use the official **Maps SDK for Android/iOS**, or React Native bindings like `react-native-maps`.
+
+2. 🚫 Do **not** use:
+   - Deprecated `google.maps.places.Autocomplete()`  
+   - Legacy Places API or legacy Directions API  
+
+3. ⚡ Implementation guidelines:
+   - For “From” and “To” location selection: always implement autocomplete using **Places API (New)**.  
+   - For route calculation: call **Routes API → computeRoutes** with parameters for real-time traffic and travel modes (`DRIVE`, `TWO_WHEELER`, `WALK`, etc.).  
+   - For ETA / fare estimation workflows: use **computeRouteMatrix**.  
+   - For searching POIs along a trip: use **searchAlongRoute**.  
+
+4. 🔐 API Keys:
+   - Always load Google API keys from **secure environment variables** (not hardcoded).  
+   - Restrict API keys by Android/iOS package name and referrer.  
+
+5. 🛠 React Native specifics:
+   - Prefer TypeScript typings when available.  
+   - Ensure code works with latest React Native (>=0.74) and `react-native-maps`.  
+   - Use hooks (`useEffect`, `useState`, `useRef`) for state management and Google Maps callbacks.  
+
+6. 📌 General:
+   - Include error handling and fallbacks for network/API errors.  
+   - Optimize for performance: debounce user input in autocomplete, lazy-load Maps SDK when possible.  
+   - Ensure code suggestions align with **2025+ Google Maps Platform updates**.  
+
+
 ⚠️ **All contributors and AI assistants must follow this guide strictly.**  
 If in doubt → refuse and escalate to human approval.

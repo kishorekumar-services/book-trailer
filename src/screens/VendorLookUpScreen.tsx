@@ -1,6 +1,8 @@
 import React from "react";
 import { View } from "react-native";
 import LocationSelector, { Location } from "../components/LocationSelector";
+import DatetimeSelector from "../components/DatetimeSelector";
+import SelectedSummary from "../components/SelectedSummary";
 // import { useQuery } from "@tanstack/react-query";
 // import { useVendorStore } from "../stores/vendorStore";
 
@@ -14,23 +16,39 @@ const VendorLookUpScreen: React.FC<Props> = ({ testID = "vendor-lookup-screen", 
   // const { data, isLoading } = useQuery({ ... });
   // const vendorState = useVendorStore();
 
+  const [pickupLocation, setPickupLocation] = React.useState<Location | null>(null);
+  const [dropoffLocation, setDropoffLocation] = React.useState<Location | null>(null);
+  const [pickupDatetime, setPickupDatetime] = React.useState<Date | null>(null);
+
   const handleLocationChange = (pickup: Location | null, dropoff: Location | null) => {
-    // You can handle location changes here (e.g., update state, call API, etc.)
-    // For now, just log them
+    setPickupLocation(pickup);
+    setDropoffLocation(dropoff);
     console.log("Pickup:", pickup);
     console.log("Dropoff:", dropoff);
   };
 
   const handleDurationCalculated = (duration: string) => {
-    // Handle duration calculated (future use)
     console.log("Duration:", duration);
   };
 
+  const handleDatetimeChange = (datetime: Date) => {
+    setPickupDatetime(datetime);
+    console.log("Pickup Datetime:", datetime);
+  };
+
   return (
-    <View testID={testID} accessibilityLabel={accessibilityLabel}>
+    <View testID={testID} accessibilityLabel={accessibilityLabel} >
       <LocationSelector
         onLocationChange={handleLocationChange}
         onDurationCalculated={handleDurationCalculated}
+      />
+      <DatetimeSelector
+        onDatetimeChange={handleDatetimeChange}
+      />
+      <SelectedSummary
+        pickupLocation={pickupLocation}
+        dropoffLocation={dropoffLocation}
+        pickupDatetime={pickupDatetime}
       />
     </View>
   );

@@ -58,16 +58,18 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
               </Text>
             </View>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <TextInput
-                ref={pickupRef}
-                style={{ flex: 1, borderWidth: 1, borderColor: "#d1d5db", borderRadius: 8, padding: 8, marginRight: 8 }}
-                placeholder="Enter pickup address"
-                testID="input-pickup-location"
-                accessibilityLabel="Pickup Location Input"
-                onChangeText={(text) => setPickupLocation(text ? { lat: 0, lng: 0, address: text } : null)}
-              />
+              <View style={{ flex: 1 }}>
+                <TextInput
+                  ref={pickupRef}
+                  style={{ borderWidth: 1, borderColor: "#d1d5db", borderRadius: 8, padding: 8 }}
+                  placeholder="Enter pickup address"
+                  testID="input-pickup-location"
+                  accessibilityLabel="Pickup Location Input"
+                  onChangeText={(text) => setPickupLocation(text ? { lat: 0, lng: 0, address: text } : null)}
+                />
+              </View>
               <TouchableOpacity
-                style={{ height: 32, width: 32, justifyContent: "center", alignItems: "center" }}
+                style={{ marginLeft: 8, height: 32, width: 32, justifyContent: "center", alignItems: "center" }}
                 onPress={handleCurrentLocation}
                 testID="button-current-location"
                 accessibilityLabel="Current Location Button"
@@ -85,16 +87,18 @@ const LocationSelector: React.FC<LocationSelectorProps> = ({
               </Text>
             </View>
             <View style={{ flexDirection: "row", alignItems: "center" }}>
-              <TextInput
-                ref={dropoffRef}
-                style={{ flex: 1, borderWidth: 1, borderColor: "#d1d5db", borderRadius: 8, padding: 8, marginRight: 8 }}
-                placeholder="Enter destination address"
-                testID="input-dropoff-location"
-                accessibilityLabel="Dropoff Location Input"
-                onChangeText={(text) => setDropoffLocation(text ? { lat: 0, lng: 0, address: text } : null)}
-              />
+              <View style={{ flex: 1 }}>
+                <TextInput
+                  ref={dropoffRef}
+                  style={{ borderWidth: 1, borderColor: "#d1d5db", borderRadius: 8, padding: 8 }}
+                  placeholder="Enter destination address"
+                  testID="input-dropoff-location"
+                  accessibilityLabel="Dropoff Location Input"
+                  onChangeText={(text) => setDropoffLocation(text ? { lat: 0, lng: 0, address: text } : null)}
+                />
+              </View>
               <TouchableOpacity
-                style={{ height: 32, width: 32, justifyContent: "center", alignItems: "center" }}
+                style={{ marginLeft: 8, height: 32, width: 32, justifyContent: "center", alignItems: "center" }}
                 onPress={handleCurrentLocation}
                 testID="button-dropoff-location"
                 accessibilityLabel="Dropoff Location Button"
